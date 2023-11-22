@@ -1,4 +1,5 @@
 @import "https://unpkg.com/open-props";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
 
 /* define keyframes here */
 
@@ -7,6 +8,9 @@
     --duration-x-fast: 200ms;
     --duration-fast: 300ms;
     --duration: 400ms;
+}
+html{
+    font-family: 'Open Sans', sans-serif
 }
 
 * {
@@ -33,4 +37,62 @@ svg {
     max-width: 100%;
     height: auto;
     display: block;
+}
+.o-button-reset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+dialog{
+    width: 35vw;
+    padding: 0;
+    border: none;
+    border-radius: .25rem;
+    &::backdrop{
+        background-color: black;
+        opacity: .7;
+    }
+}
+.dialog__header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background-color: lightgray;
+}
+.dialog__body{
+    padding: 1.5rem;
+}
+@keyframes slide-to-middle {
+    from{
+        transform: translateY(30px);
+    }
+}
+@keyframes fade-out {
+    to{
+        opacity: 0;
+    }
+}
+
+::view-transition-new(dialog) {
+    animation: slide-to-middle .5s;
+  }
+::view-transition-old(dialog){
+    animation: fade-out .4s;
 }
